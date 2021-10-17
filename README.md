@@ -5,4 +5,5 @@ Steps to Clone-
 4.Click  Open with GitHub Desktop to clone and open the repository with GitHub Desktop.
 5.Click Choose... and, using Windows Explorer, navigate to a local path where you want to clone the repository.
 6.Click Clone.
-
+7.Install node modules by typing 'npm install' in VS Code
+8.Start the app by typing 'npm start'
