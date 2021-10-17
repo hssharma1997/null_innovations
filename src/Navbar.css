@@ -1,0 +1,13 @@
+ul{
+   list-style: none;
+}
+.navbar{
+background-color: aqua;
+padding: 8px;
+display: grid;
+text-align: right;
+}
+button{
+    padding: 6px;
+   
+}

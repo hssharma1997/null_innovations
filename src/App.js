@@ -1,25 +1,43 @@
-import logo from './logo.svg';
 import './App.css';
+import Home from './Home'
+import Signin from './Signin';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import Loggedin from './Loggedin'
+import { useState, useEffect } from 'react';
+import Profile from './Profile';
 
 function App() {
+
+  const [userinfo, setUserinfo] = useState([])
+  const [user,setUser] = (JSON.stringify(localStorage.getItem('user')))
+  const [postdata, setPostdata] = useState([])
+
+
+  useEffect(() => {
+    fetch('https://jsonplaceholder.typicode.com/posts')
+      .then(response => response.json())
+      .then(data => setPostdata(data));
+
+    fetch('https://jsonplaceholder.typicode.com/users')
+      .then(response => response.json())
+      .then(data => setUserinfo(data));
+
+  }, [])
+
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    <Router>
+      <div className="App">
+
+        <Switch>
+          <Route path="/" exact ><Home postdata={postdata} userinfo={userinfo} /></Route>
+          <Route path="/signin" exact component={Signin} />
+          <Route path="/profile/:userId"  ><Profile userinfo={userinfo} /></Route>
+          {user ? <Route path="/loggedin" exact ><Loggedin postdata={postdata} userinfo={userinfo} /></Route> : ""}
+        </Switch>
+      </div>
+    </Router>
+  )
 }
 
 export default App;

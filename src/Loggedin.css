@@ -1,0 +1,34 @@
+ul{
+    list-style: none;
+    display: flex;
+    justify-content: right;
+ }
+ ul>li{
+     padding: 4px;
+ }
+ .loggedin_navbar{
+ background-color: aqua;
+ padding: 8px;
+ text-align: right;
+ }
+ button{
+     padding: 6px;
+ }
+ :link {
+    color: blue;
+  }
+  
+  /* visited link */
+  a:visited {
+    color: blue;
+  }
+  
+  /* mouse over link */
+  a:hover {
+    color: blue;
+  }
+  
+  /* selected link */
+  a:active {
+    color: blue;
+  }
